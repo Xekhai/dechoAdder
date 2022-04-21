@@ -512,6 +512,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             ),
                       ),
                     ),
+                    Align(
+                      alignment: AlignmentDirectional(-1, 0),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                        child: Text(
+                          'Select Date Below',
+                          textAlign: TextAlign.start,
+                          style: FlutterFlowTheme.of(context).bodyText1,
+                        ),
+                      ),
+                    ),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                       child: FFButtonWidget(
@@ -551,7 +562,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
                 child: Container(
                   width: double.infinity,
-                  height: 100,
                   decoration: BoxDecoration(),
                   alignment: AlignmentDirectional(1, 0),
                   child: Visibility(
@@ -597,14 +607,37 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           );
                         }
 
-                        setState(() {
-                          titleController.clear();
-                          shortdescController.clear();
-                          weblinkController.clear();
-                          vgoalController.clear();
-                          dgoalController.clear();
-                          addressController.clear();
-                        });
+                        var confirmDialogResponse = await showDialog<bool>(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: Text('Clear Fields?'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () => Navigator.pop(
+                                          alertDialogContext, false),
+                                      child: Text('No'),
+                                    ),
+                                    TextButton(
+                                      onPressed: () => Navigator.pop(
+                                          alertDialogContext, true),
+                                      child: Text('Yes'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            ) ??
+                            false;
+                        if (confirmDialogResponse) {
+                          setState(() {
+                            titleController.clear();
+                            shortdescController.clear();
+                            weblinkController.clear();
+                            vgoalController.clear();
+                            dgoalController.clear();
+                            addressController.clear();
+                          });
+                        }
 
                         setState(() {});
                       },
