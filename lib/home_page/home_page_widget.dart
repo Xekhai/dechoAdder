@@ -1,9 +1,11 @@
 import '../backend/api_requests/api_calls.dart';
+import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePageWidget extends StatefulWidget {
@@ -39,27 +41,78 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(100),
+        child: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+          automaticallyImplyLeading: false,
+          flexibleSpace: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 14),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                        child: FlutterFlowIconButton(
+                          borderColor: Colors.transparent,
+                          borderRadius: 30,
+                          borderWidth: 1,
+                          buttonSize: 50,
+                          icon: FaIcon(
+                            FontAwesomeIcons.uikit,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                          onPressed: () {
+                            print('IconButton pressed ...');
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                        child: Text(
+                          'Back',
+                          style: FlutterFlowTheme.of(context).title2.override(
+                                fontFamily: 'Poppins',
+                                color: Colors.white,
+                                fontSize: 16,
+                              ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
+                  child: Text(
+                    'Add DeCHO Cause',
+                    style: FlutterFlowTheme.of(context).title2.override(
+                          fontFamily: 'Poppins',
+                          color: Colors.white,
+                          fontSize: 22,
+                        ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: [],
+          elevation: 2,
+        ),
+      ),
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: 80,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).primaryColor,
-              ),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20, 50, 0, 0),
-                child: Text(
-                  'Add DeCHO Cause',
-                  textAlign: TextAlign.start,
-                  style: FlutterFlowTheme.of(context).bodyText1,
-                ),
-              ),
-            ),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
               child: Column(
@@ -281,10 +334,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       ),
                       borderRadius: 12,
                     ),
-                  ),
-                  Text(
-                    'Hello World',
-                    style: FlutterFlowTheme.of(context).bodyText1,
                   ),
                 ],
               ),
