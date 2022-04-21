@@ -251,6 +251,35 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           color: FlutterFlowTheme.of(context).secondaryText,
                         ),
                   ),
+                  FFButtonWidget(
+                    onPressed: () async {
+                      await DatePicker.showDateTimePicker(
+                        context,
+                        showTitleActions: true,
+                        onConfirm: (date) {
+                          setState(() => datePicked = date);
+                        },
+                        currentTime: getCurrentTimestamp,
+                        minTime: getCurrentTimestamp,
+                      );
+                    },
+                    text: datePicked.toString(),
+                    options: FFButtonOptions(
+                      width: double.infinity,
+                      height: 40,
+                      color: FlutterFlowTheme.of(context).primaryColor,
+                      textStyle:
+                          FlutterFlowTheme.of(context).subtitle2.override(
+                                fontFamily: 'Poppins',
+                                color: Colors.white,
+                              ),
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: 1,
+                      ),
+                      borderRadius: 12,
+                    ),
+                  ),
                   Text(
                     (jktest?.statusCode ?? 200).toString(),
                     style: FlutterFlowTheme.of(context).bodyText1,
@@ -267,18 +296,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 alignment: AlignmentDirectional(1, 0),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    await DatePicker.showDatePicker(
-                      context,
-                      showTitleActions: true,
-                      onConfirm: (date) {
-                        setState(() => datePicked = date);
-                      },
-                      currentTime: getCurrentTimestamp,
-                      minTime: getCurrentTimestamp,
-                    );
-
                     jktest = await CreateCauseDeCHOCall.call(
-                      date: dateTimeFormat('d/M H:mm', datePicked),
+                      date: datePicked.toString(),
                       votegoal: int.parse(textController1.text),
                       donationgoal: int.parse(textController2.text),
                       title: textController6.text,
