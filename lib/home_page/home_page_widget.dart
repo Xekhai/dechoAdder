@@ -274,7 +274,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     );
 
                     jktest = await CreateCauseDeCHOCall.call(
-                      date: datePicked.toString(),
+                      date: dateTimeFormat('d/M H:mm', datePicked),
                       votegoal: int.parse(textController1.text),
                       donationgoal: int.parse(textController2.text),
                       title: textController6.text,
