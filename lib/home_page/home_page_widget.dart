@@ -360,23 +360,19 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           address: textController3.text,
                         );
                         if ((jktest?.succeeded ?? true)) {
-                          await showDialog(
-                            context: context,
-                            builder: (alertDialogContext) {
-                              return AlertDialog(
-                                title: Text('ssss'),
-                                content: Text('ssss'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(alertDialogContext),
-                                    child: Text('Ok'),
-                                  ),
-                                ],
-                              );
-                            },
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                getJsonField(
+                                  (jktest?.jsonBody ?? ''),
+                                  r'''$''',
+                                ).toString(),
+                                style: TextStyle(),
+                              ),
+                              duration: Duration(milliseconds: 4000),
+                              backgroundColor: Color(0x00000000),
+                            ),
                           );
-                          setState(() => FFAppState().loading = false);
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
@@ -391,7 +387,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               backgroundColor: Color(0x00000000),
                             ),
                           );
-                          setState(() => FFAppState().loading = false);
                         }
 
                         setState(() {
