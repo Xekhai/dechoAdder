@@ -649,22 +649,31 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ),
               Divider(
                 thickness: 1,
-                color: FlutterFlowTheme.of(context).secondaryColor,
+                indent: 20,
+                endIndent: 20,
+                color: FlutterFlowTheme.of(context).secondaryText,
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
+                padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 20),
                 child: Container(
                   width: double.infinity,
-                  height: 100,
                   decoration: BoxDecoration(
-                    color: Color(0xFFEEEEEE),
+                    color: Color(0xFF0E0505),
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Text(
-                    getJsonField(
-                      (jktest?.jsonBody ?? ''),
-                      r'''$''',
-                    ).toString(),
-                    style: FlutterFlowTheme.of(context).bodyText1,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
+                    child: Text(
+                      getJsonField(
+                        (jktest?.jsonBody ?? ''),
+                        r'''$''',
+                      ).toString(),
+                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                            fontFamily: 'Poppins',
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                          ),
+                    ),
                   ),
                 ),
               ),
