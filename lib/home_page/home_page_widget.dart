@@ -95,6 +95,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           fontFamily: 'Poppins',
                           color: FlutterFlowTheme.of(context).secondaryText,
                         ),
+                    keyboardType: TextInputType.number,
                   ),
                   TextFormField(
                     controller: textController2,
@@ -126,6 +127,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           fontFamily: 'Poppins',
                           color: FlutterFlowTheme.of(context).secondaryText,
                         ),
+                    keyboardType: TextInputType.number,
                   ),
                   TextFormField(
                     controller: textController3,
@@ -281,7 +283,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     ),
                   ),
                   Text(
-                    (jktest?.statusCode ?? 200).toString(),
+                    'Hello World',
                     style: FlutterFlowTheme.of(context).bodyText1,
                   ),
                 ],
