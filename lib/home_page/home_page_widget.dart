@@ -300,7 +300,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   visible: !(FFAppState().loading) ?? true,
                   child: FFButtonWidget(
                     onPressed: () async {
-                      setState(() => FFAppState().loading = true);
                       jktest = await CreateCauseDeCHOCall.call(
                         date: datePicked.toString(),
                         votegoal: int.parse(textController1.text),
@@ -329,21 +328,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         );
                         setState(() => FFAppState().loading = false);
                       } else {
-                        await showDialog(
-                          context: context,
-                          builder: (alertDialogContext) {
-                            return AlertDialog(
-                              title: Text('hi'),
-                              content: Text('errr'),
-                              actions: [
-                                TextButton(
-                                  onPressed: () =>
-                                      Navigator.pop(alertDialogContext),
-                                  child: Text('Ok'),
-                                ),
-                              ],
-                            );
-                          },
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              getJsonField(
+                                (jktest?.jsonBody ?? ''),
+                                r'''$''',
+                              ).toString(),
+                              style: TextStyle(),
+                            ),
+                            duration: Duration(milliseconds: 4000),
+                            backgroundColor: Color(0x00000000),
+                          ),
                         );
                         setState(() => FFAppState().loading = false);
                       }
