@@ -3,6 +3,7 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -18,23 +19,23 @@ class HomePageWidget extends StatefulWidget {
 class _HomePageWidgetState extends State<HomePageWidget> {
   ApiCallResponse jktest;
   DateTime datePicked;
-  TextEditingController textController1;
-  TextEditingController textController2;
-  TextEditingController textController3;
-  TextEditingController textController4;
-  TextEditingController textController5;
-  TextEditingController textController6;
+  TextEditingController addressController;
+  TextEditingController dgoalController;
+  TextEditingController shortdescController;
+  TextEditingController titleController;
+  TextEditingController weblinkController;
+  TextEditingController vgoalController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    textController1 = TextEditingController();
-    textController2 = TextEditingController();
-    textController3 = TextEditingController();
-    textController4 = TextEditingController();
-    textController5 = TextEditingController();
-    textController6 = TextEditingController();
+    addressController = TextEditingController();
+    dgoalController = TextEditingController();
+    shortdescController = TextEditingController();
+    titleController = TextEditingController();
+    weblinkController = TextEditingController();
+    vgoalController = TextEditingController();
   }
 
   @override
@@ -119,221 +120,428 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    TextFormField(
-                      controller: textController1,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        hintText: 'Voting Goal...',
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 1,
-                          ),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(4.0),
-                            topRight: Radius.circular(4.0),
-                          ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                      child: TextFormField(
+                        onChanged: (_) => EasyDebounce.debounce(
+                          'titleController',
+                          Duration(milliseconds: 2000),
+                          () => setState(() {}),
                         ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 1,
+                        controller: titleController,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF57636C),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          hintText: 'Title',
+                          hintStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF57636C),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFFDBE2E7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
                           ),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(4.0),
-                            topRight: Radius.circular(4.0),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFFDBE2E7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
                           ),
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding:
+                              EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
+                          suffixIcon: titleController.text.isNotEmpty
+                              ? InkWell(
+                                  onTap: () => setState(
+                                    () => titleController.clear(),
+                                  ),
+                                  child: Icon(
+                                    Icons.clear,
+                                    color: Color(0xFF757575),
+                                    size: 22,
+                                  ),
+                                )
+                              : null,
                         ),
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Lexend Deca',
+                              color: Color(0xFF0E0505),
+                              fontSize: 14,
+                              fontWeight: FontWeight.normal,
+                            ),
                       ),
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Poppins',
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                          ),
-                      keyboardType: TextInputType.number,
                     ),
-                    TextFormField(
-                      controller: textController2,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        hintText: 'Donation Goal...',
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 1,
-                          ),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(4.0),
-                            topRight: Radius.circular(4.0),
-                          ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                      child: TextFormField(
+                        onChanged: (_) => EasyDebounce.debounce(
+                          'shortdescController',
+                          Duration(milliseconds: 2000),
+                          () => setState(() {}),
                         ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 1,
+                        controller: shortdescController,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF57636C),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          hintText: 'Short Description ',
+                          hintStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF57636C),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFFDBE2E7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
                           ),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(4.0),
-                            topRight: Radius.circular(4.0),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFFDBE2E7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
                           ),
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding:
+                              EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
+                          suffixIcon: shortdescController.text.isNotEmpty
+                              ? InkWell(
+                                  onTap: () => setState(
+                                    () => shortdescController.clear(),
+                                  ),
+                                  child: Icon(
+                                    Icons.clear,
+                                    color: Color(0xFF757575),
+                                    size: 22,
+                                  ),
+                                )
+                              : null,
                         ),
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Lexend Deca',
+                              color: Color(0xFF0E0505),
+                              fontSize: 14,
+                              fontWeight: FontWeight.normal,
+                            ),
                       ),
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Poppins',
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                          ),
-                      keyboardType: TextInputType.number,
                     ),
-                    TextFormField(
-                      controller: textController3,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        hintText: 'Wallet Address...',
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 1,
-                          ),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(4.0),
-                            topRight: Radius.circular(4.0),
-                          ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                      child: TextFormField(
+                        onChanged: (_) => EasyDebounce.debounce(
+                          'weblinkController',
+                          Duration(milliseconds: 2000),
+                          () => setState(() {}),
                         ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 1,
+                        controller: weblinkController,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF57636C),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          hintText: 'Website Link',
+                          hintStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF57636C),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFFDBE2E7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
                           ),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(4.0),
-                            topRight: Radius.circular(4.0),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFFDBE2E7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
                           ),
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding:
+                              EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
+                          suffixIcon: weblinkController.text.isNotEmpty
+                              ? InkWell(
+                                  onTap: () => setState(
+                                    () => weblinkController.clear(),
+                                  ),
+                                  child: Icon(
+                                    Icons.clear,
+                                    color: Color(0xFF757575),
+                                    size: 22,
+                                  ),
+                                )
+                              : null,
                         ),
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Lexend Deca',
+                              color: Color(0xFF0E0505),
+                              fontSize: 14,
+                              fontWeight: FontWeight.normal,
+                            ),
                       ),
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Poppins',
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                          ),
                     ),
-                    TextFormField(
-                      controller: textController4,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        hintText: 'Website Link...',
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 1,
-                          ),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(4.0),
-                            topRight: Radius.circular(4.0),
-                          ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                      child: TextFormField(
+                        onChanged: (_) => EasyDebounce.debounce(
+                          'vgoalController',
+                          Duration(milliseconds: 2000),
+                          () => setState(() {}),
                         ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 1,
+                        controller: vgoalController,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF57636C),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          hintText: 'Voting Goal',
+                          hintStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF57636C),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFFDBE2E7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
                           ),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(4.0),
-                            topRight: Radius.circular(4.0),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFFDBE2E7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
                           ),
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding:
+                              EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
+                          suffixIcon: vgoalController.text.isNotEmpty
+                              ? InkWell(
+                                  onTap: () => setState(
+                                    () => vgoalController.clear(),
+                                  ),
+                                  child: Icon(
+                                    Icons.clear,
+                                    color: Color(0xFF757575),
+                                    size: 22,
+                                  ),
+                                )
+                              : null,
                         ),
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Lexend Deca',
+                              color: Color(0xFF0E0505),
+                              fontSize: 14,
+                              fontWeight: FontWeight.normal,
+                            ),
+                        keyboardType: TextInputType.number,
                       ),
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Poppins',
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                          ),
                     ),
-                    TextFormField(
-                      controller: textController5,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        hintText: 'Short  Description...',
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 1,
-                          ),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(4.0),
-                            topRight: Radius.circular(4.0),
-                          ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                      child: TextFormField(
+                        onChanged: (_) => EasyDebounce.debounce(
+                          'dgoalController',
+                          Duration(milliseconds: 2000),
+                          () => setState(() {}),
                         ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 1,
+                        controller: dgoalController,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF57636C),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          hintText: 'Donation Goal',
+                          hintStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF57636C),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFFDBE2E7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
                           ),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(4.0),
-                            topRight: Radius.circular(4.0),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFFDBE2E7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
                           ),
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding:
+                              EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
+                          suffixIcon: dgoalController.text.isNotEmpty
+                              ? InkWell(
+                                  onTap: () => setState(
+                                    () => dgoalController.clear(),
+                                  ),
+                                  child: Icon(
+                                    Icons.clear,
+                                    color: Color(0xFF757575),
+                                    size: 22,
+                                  ),
+                                )
+                              : null,
                         ),
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Lexend Deca',
+                              color: Color(0xFF0E0505),
+                              fontSize: 14,
+                              fontWeight: FontWeight.normal,
+                            ),
+                        keyboardType: TextInputType.number,
                       ),
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Poppins',
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                          ),
                     ),
-                    TextFormField(
-                      controller: textController6,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        hintText: 'Cause Title...',
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 1,
-                          ),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(4.0),
-                            topRight: Radius.circular(4.0),
-                          ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                      child: TextFormField(
+                        onChanged: (_) => EasyDebounce.debounce(
+                          'addressController',
+                          Duration(milliseconds: 2000),
+                          () => setState(() {}),
                         ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 1,
+                        controller: addressController,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF57636C),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          hintText: 'Wallet Address ',
+                          hintStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF57636C),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFFDBE2E7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
                           ),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(4.0),
-                            topRight: Radius.circular(4.0),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFFDBE2E7),
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
                           ),
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding:
+                              EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
+                          suffixIcon: addressController.text.isNotEmpty
+                              ? InkWell(
+                                  onTap: () => setState(
+                                    () => addressController.clear(),
+                                  ),
+                                  child: Icon(
+                                    Icons.clear,
+                                    color: Color(0xFF757575),
+                                    size: 22,
+                                  ),
+                                )
+                              : null,
                         ),
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Lexend Deca',
+                              color: Color(0xFF0E0505),
+                              fontSize: 14,
+                              fontWeight: FontWeight.normal,
+                            ),
                       ),
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Poppins',
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                          ),
                     ),
-                    FFButtonWidget(
-                      onPressed: () async {
-                        await DatePicker.showDateTimePicker(
-                          context,
-                          showTitleActions: true,
-                          onConfirm: (date) {
-                            setState(() => datePicked = date);
-                          },
-                          currentTime: getCurrentTimestamp,
-                          minTime: getCurrentTimestamp,
-                        );
-                      },
-                      text: datePicked.toString(),
-                      options: FFButtonOptions(
-                        width: double.infinity,
-                        height: 40,
-                        color: FlutterFlowTheme.of(context).primaryColor,
-                        textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
-                                ),
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          await DatePicker.showDateTimePicker(
+                            context,
+                            showTitleActions: true,
+                            onConfirm: (date) {
+                              setState(() => datePicked = date);
+                            },
+                            currentTime: getCurrentTimestamp,
+                            minTime: getCurrentTimestamp,
+                          );
+                        },
+                        text: datePicked.toString(),
+                        options: FFButtonOptions(
+                          width: double.infinity,
+                          height: 40,
+                          color: FlutterFlowTheme.of(context).primaryColor,
+                          textStyle:
+                              FlutterFlowTheme.of(context).subtitle2.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1,
+                          ),
+                          borderRadius: 12,
                         ),
-                        borderRadius: 12,
                       ),
                     ),
                   ],
@@ -352,12 +560,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       onPressed: () async {
                         jktest = await CreateCauseDeCHOCall.call(
                           date: datePicked.toString(),
-                          votegoal: int.parse(textController1.text),
-                          donationgoal: int.parse(textController2.text),
-                          title: textController6.text,
-                          shDesc: textController5.text,
-                          webLink: textController4.text,
-                          address: textController3.text,
+                          votegoal: int.parse(vgoalController.text),
+                          donationgoal: int.parse(dgoalController.text),
+                          title: titleController.text,
+                          shDesc: shortdescController.text,
+                          webLink: weblinkController.text,
+                          address: addressController.text,
                         );
                         if ((jktest?.succeeded ?? true)) {
                           ScaffoldMessenger.of(context).showSnackBar(
@@ -390,12 +598,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         }
 
                         setState(() {
-                          textController1.clear();
-                          textController2.clear();
-                          textController3.clear();
-                          textController4.clear();
-                          textController5.clear();
-                          textController6.clear();
+                          titleController.clear();
+                          shortdescController.clear();
+                          weblinkController.clear();
+                          vgoalController.clear();
+                          dgoalController.clear();
+                          addressController.clear();
                         });
 
                         setState(() {});
