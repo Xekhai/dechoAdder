@@ -12,6 +12,9 @@ void main() async {
 
   await FlutterFlowTheme.initialize();
 
+  // Initialize FFAppState.
+  FFAppState();
+
   runApp(MyApp());
 }
 

@@ -294,97 +294,87 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 height: 100,
                 decoration: BoxDecoration(),
                 alignment: AlignmentDirectional(1, 0),
-                child: FFButtonWidget(
-                  onPressed: () async {
-                    jktest = await CreateCauseDeCHOCall.call(
-                      date: datePicked.toString(),
-                      votegoal: int.parse(textController1.text),
-                      donationgoal: int.parse(textController2.text),
-                      title: textController6.text,
-                      shDesc: textController5.text,
-                      webLink: textController4.text,
-                      address: textController3.text,
-                    );
-                    await showDialog(
-                      context: context,
-                      builder: (alertDialogContext) {
-                        return AlertDialog(
-                          title: Text('mmm'),
-                          content: Text('l....'),
-                          actions: [
-                            TextButton(
-                              onPressed: () =>
-                                  Navigator.pop(alertDialogContext),
-                              child: Text('Ok'),
-                            ),
-                          ],
+                child: Visibility(
+                  visible: !(FFAppState().loading) ?? true,
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      setState(() => FFAppState().loading = true);
+                      jktest = await CreateCauseDeCHOCall.call(
+                        date: datePicked.toString(),
+                        votegoal: int.parse(textController1.text),
+                        donationgoal: int.parse(textController2.text),
+                        title: textController6.text,
+                        shDesc: textController5.text,
+                        webLink: textController4.text,
+                        address: textController3.text,
+                      );
+                      if ((jktest?.succeeded ?? true)) {
+                        await showDialog(
+                          context: context,
+                          builder: (alertDialogContext) {
+                            return AlertDialog(
+                              title: Text('ssss'),
+                              content: Text('ssss'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext),
+                                  child: Text('Ok'),
+                                ),
+                              ],
+                            );
+                          },
                         );
-                      },
-                    );
-                    if ((jktest?.succeeded ?? true)) {
-                      await showDialog(
-                        context: context,
-                        builder: (alertDialogContext) {
-                          return AlertDialog(
-                            title: Text('ssss'),
-                            content: Text('ssss'),
-                            actions: [
-                              TextButton(
-                                onPressed: () =>
-                                    Navigator.pop(alertDialogContext),
-                                child: Text('Ok'),
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    } else {
-                      await showDialog(
-                        context: context,
-                        builder: (alertDialogContext) {
-                          return AlertDialog(
-                            title: Text('hi'),
-                            content: Text('errr'),
-                            actions: [
-                              TextButton(
-                                onPressed: () =>
-                                    Navigator.pop(alertDialogContext),
-                                child: Text('Ok'),
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    }
+                        setState(() => FFAppState().loading = false);
+                      } else {
+                        await showDialog(
+                          context: context,
+                          builder: (alertDialogContext) {
+                            return AlertDialog(
+                              title: Text('hi'),
+                              content: Text('errr'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext),
+                                  child: Text('Ok'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      }
 
-                    setState(() {
-                      textController1.clear();
-                      textController2.clear();
-                      textController3.clear();
-                      textController4.clear();
-                      textController5.clear();
-                      textController6.clear();
-                    });
+                      setState(() {
+                        textController1.clear();
+                        textController2.clear();
+                        textController3.clear();
+                        textController4.clear();
+                        textController5.clear();
+                        textController6.clear();
+                      });
 
-                    setState(() {});
-                  },
-                  text: 'Create',
-                  options: FFButtonOptions(
-                    width: 150,
-                    height: 40,
-                    color: Color(0xFF39D2C0),
-                    textStyle: FlutterFlowTheme.of(context).bodyText1.override(
-                          fontFamily: 'Lexend Deca',
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.normal,
-                        ),
-                    elevation: 2,
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1,
+                      setState(() {});
+                    },
+                    text: 'Create',
+                    options: FFButtonOptions(
+                      width: 150,
+                      height: 40,
+                      color: Color(0xFF39D2C0),
+                      textStyle:
+                          FlutterFlowTheme.of(context).bodyText1.override(
+                                fontFamily: 'Lexend Deca',
+                                color: Colors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.normal,
+                              ),
+                      elevation: 2,
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: 1,
+                      ),
+                      borderRadius: 40,
                     ),
-                    borderRadius: 40,
                   ),
                 ),
               ),
