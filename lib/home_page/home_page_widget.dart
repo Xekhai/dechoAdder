@@ -251,6 +251,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           color: FlutterFlowTheme.of(context).secondaryText,
                         ),
                   ),
+                  Text(
+                    (jktest?.statusCode ?? 200).toString(),
+                    style: FlutterFlowTheme.of(context).bodyText1,
+                  ),
                 ],
               ),
             ),
@@ -282,19 +286,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       webLink: textController4.text,
                       address: textController3.text,
                     );
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          getJsonField(
-                            (jktest?.jsonBody ?? ''),
-                            r'''$''',
-                          ).toString(),
-                          style: TextStyle(),
-                        ),
-                        duration: Duration(milliseconds: 4000),
-                        backgroundColor: Color(0x00000000),
-                      ),
-                    );
+                    setState(() {
+                      textController1.clear();
+                      textController2.clear();
+                      textController3.clear();
+                      textController4.clear();
+                      textController5.clear();
+                      textController6.clear();
+                    });
 
                     setState(() {});
                   },
