@@ -579,36 +579,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             webLink: weblinkController.text,
                             address: addressController.text,
                           );
-                          if ((jktest?.succeeded ?? true)) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  getJsonField(
-                                    (jktest?.jsonBody ?? ''),
-                                    r'''$''',
-                                  ).toString(),
-                                  style: TextStyle(),
-                                ),
-                                duration: Duration(milliseconds: 4000),
-                                backgroundColor: Color(0x00000000),
-                              ),
-                            );
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  getJsonField(
-                                    (jktest?.jsonBody ?? ''),
-                                    r'''$''',
-                                  ).toString(),
-                                  style: TextStyle(),
-                                ),
-                                duration: Duration(milliseconds: 4000),
-                                backgroundColor: Color(0x00000000),
-                              ),
-                            );
-                          }
-
                           var confirmDialogResponse = await showDialog<bool>(
                                 context: context,
                                 builder: (alertDialogContext) {
@@ -664,6 +634,37 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                       ),
                     ),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(-1, 0),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                  child: Text(
+                    'Json Response',
+                    style: FlutterFlowTheme.of(context).bodyText1,
+                  ),
+                ),
+              ),
+              Divider(
+                thickness: 1,
+                color: FlutterFlowTheme.of(context).secondaryColor,
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
+                child: Container(
+                  width: double.infinity,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFEEEEEE),
+                  ),
+                  child: Text(
+                    getJsonField(
+                      (jktest?.jsonBody ?? ''),
+                      r'''$''',
+                    ).toString(),
+                    style: FlutterFlowTheme.of(context).bodyText1,
                   ),
                 ),
               ),
