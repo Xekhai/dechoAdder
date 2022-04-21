@@ -343,6 +343,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             );
                           },
                         );
+                        setState(() => FFAppState().loading = false);
                       }
 
                       setState(() {
