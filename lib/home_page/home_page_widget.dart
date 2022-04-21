@@ -566,99 +566,102 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   alignment: AlignmentDirectional(1, 0),
                   child: Visibility(
                     visible: !(FFAppState().loading) ?? true,
-                    child: FFButtonWidget(
-                      onPressed: () async {
-                        jktest = await CreateCauseDeCHOCall.call(
-                          date: datePicked.toString(),
-                          votegoal: int.parse(vgoalController.text),
-                          donationgoal: int.parse(dgoalController.text),
-                          title: titleController.text,
-                          shDesc: shortdescController.text,
-                          webLink: weblinkController.text,
-                          address: addressController.text,
-                        );
-                        if ((jktest?.succeeded ?? true)) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                getJsonField(
-                                  (jktest?.jsonBody ?? ''),
-                                  r'''$''',
-                                ).toString(),
-                                style: TextStyle(),
-                              ),
-                              duration: Duration(milliseconds: 4000),
-                              backgroundColor: Color(0x00000000),
-                            ),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          jktest = await CreateCauseDeCHOCall.call(
+                            date: datePicked.toString(),
+                            votegoal: int.parse(vgoalController.text),
+                            donationgoal: int.parse(dgoalController.text),
+                            title: titleController.text,
+                            shDesc: shortdescController.text,
+                            webLink: weblinkController.text,
+                            address: addressController.text,
                           );
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                getJsonField(
-                                  (jktest?.jsonBody ?? ''),
-                                  r'''$''',
-                                ).toString(),
-                                style: TextStyle(),
-                              ),
-                              duration: Duration(milliseconds: 4000),
-                              backgroundColor: Color(0x00000000),
-                            ),
-                          );
-                        }
-
-                        var confirmDialogResponse = await showDialog<bool>(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  title: Text('Clear Fields?'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () => Navigator.pop(
-                                          alertDialogContext, false),
-                                      child: Text('No'),
-                                    ),
-                                    TextButton(
-                                      onPressed: () => Navigator.pop(
-                                          alertDialogContext, true),
-                                      child: Text('Yes'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            ) ??
-                            false;
-                        if (confirmDialogResponse) {
-                          setState(() {
-                            titleController.clear();
-                            shortdescController.clear();
-                            weblinkController.clear();
-                            vgoalController.clear();
-                            dgoalController.clear();
-                            addressController.clear();
-                          });
-                        }
-
-                        setState(() {});
-                      },
-                      text: 'Create',
-                      options: FFButtonOptions(
-                        width: 150,
-                        height: 40,
-                        color: Color(0xFF39D2C0),
-                        textStyle:
-                            FlutterFlowTheme.of(context).bodyText1.override(
-                                  fontFamily: 'Lexend Deca',
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.normal,
+                          if ((jktest?.succeeded ?? true)) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  getJsonField(
+                                    (jktest?.jsonBody ?? ''),
+                                    r'''$''',
+                                  ).toString(),
+                                  style: TextStyle(),
                                 ),
-                        elevation: 2,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor: Color(0x00000000),
+                              ),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  getJsonField(
+                                    (jktest?.jsonBody ?? ''),
+                                    r'''$''',
+                                  ).toString(),
+                                  style: TextStyle(),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor: Color(0x00000000),
+                              ),
+                            );
+                          }
+
+                          var confirmDialogResponse = await showDialog<bool>(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    title: Text('Clear Fields?'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () => Navigator.pop(
+                                            alertDialogContext, false),
+                                        child: Text('No'),
+                                      ),
+                                      TextButton(
+                                        onPressed: () => Navigator.pop(
+                                            alertDialogContext, true),
+                                        child: Text('Yes'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              ) ??
+                              false;
+                          if (confirmDialogResponse) {
+                            setState(() {
+                              titleController.clear();
+                              shortdescController.clear();
+                              weblinkController.clear();
+                              vgoalController.clear();
+                              dgoalController.clear();
+                              addressController.clear();
+                            });
+                          }
+
+                          setState(() {});
+                        },
+                        text: 'Create',
+                        options: FFButtonOptions(
+                          width: 150,
+                          height: 40,
+                          color: Color(0xFF39D2C0),
+                          textStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          elevation: 2,
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1,
+                          ),
+                          borderRadius: 40,
                         ),
-                        borderRadius: 40,
                       ),
                     ),
                   ),
