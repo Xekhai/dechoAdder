@@ -49,3 +49,16 @@ class CreateCauseDeCHOCall {
     );
   }
 }
+
+class ListcausesCall {
+  static Future<ApiCallResponse> call() {
+    return ApiManager.instance.makeApiCall(
+      callName: 'listcauses',
+      apiUrl: 'https://decho-staging.herokuapp.com/api/v1/causes/',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+    );
+  }
+}
