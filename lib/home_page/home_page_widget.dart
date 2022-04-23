@@ -138,7 +138,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         'assets/images/DeCHO_for_algorand_ecosystem_Black_Logo.png',
                         width: 100,
                         height: 100,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.contain,
                       ),
                     ),
                   ),
@@ -173,7 +173,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Icon(
-                      Icons.settings_outlined,
+                      Icons.add_circle_outline,
                       color: FlutterFlowTheme.of(context).secondaryText,
                       size: 24,
                     ),
@@ -213,7 +213,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               FaIcon(
-                                FontAwesomeIcons.clipboardList,
+                                FontAwesomeIcons.listAlt,
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
                                 size: 24,
@@ -675,7 +675,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           ),
                           options: FFButtonOptions(
                             width: double.infinity,
-                            height: 55,
+                            height: 60,
                             color: FlutterFlowTheme.of(context).primaryColor,
                             textStyle:
                                 FlutterFlowTheme.of(context).subtitle2.override(
@@ -686,7 +686,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               color: Colors.transparent,
                               width: 1,
                             ),
-                            borderRadius: 5,
+                            borderRadius: 7,
                           ),
                         ),
                       ),
