@@ -62,3 +62,18 @@ class ListcausesCall {
     );
   }
 }
+
+class CheckChoiceBalanceCall {
+  static Future<ApiCallResponse> call({
+    String address = '',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'CheckChoiceBalance',
+      apiUrl: 'https://decho-staging.herokuapp.com/api/v1/view/${address}',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+    );
+  }
+}

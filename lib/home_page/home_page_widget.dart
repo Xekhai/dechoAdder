@@ -1,4 +1,5 @@
 import '../backend/api_requests/api_calls.dart';
+import '../check_choice_balance/check_choice_balance_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -223,6 +224,58 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                                 child: Text(
                                   'List Projects API',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                      ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Icon(
+                          Icons.chevron_right_rounded,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          size: 24,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 20, 0),
+                  child: InkWell(
+                    onTap: () async {
+                      await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CheckChoiceBalanceWidget(),
+                        ),
+                      );
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Icon(
+                                Icons.remove_red_eye_outlined,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 24,
+                              ),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+                                child: Text(
+                                  'View Choice Balance API',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
