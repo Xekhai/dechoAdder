@@ -2,9 +2,9 @@ import '../backend/api_requests/api_calls.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
 import '../home_page/home_page_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -20,20 +20,11 @@ class _ListCausesWidgetState extends State<ListCausesWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  void initState() {
-    super.initState();
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      response = await ListcausesCall.call();
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(100),
+        preferredSize: Size.fromHeight(150),
         child: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).primaryColor,
           automaticallyImplyLeading: false,
@@ -50,7 +41,7 @@ class _ListCausesWidgetState extends State<ListCausesWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                        padding: EdgeInsetsDirectional.fromSTEB(12, 5, 0, 0),
                         child: FlutterFlowIconButton(
                           borderColor: Colors.transparent,
                           borderRadius: 30,
@@ -66,22 +57,27 @@ class _ListCausesWidgetState extends State<ListCausesWidget> {
                           },
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                        child: Text(
-                          'DeCHO Connect',
-                          style: FlutterFlowTheme.of(context).title2.override(
-                                fontFamily: 'Poppins',
-                                color: Colors.white,
-                                fontSize: 16,
-                              ),
-                        ),
-                      ),
                     ],
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                  child: Text(
+                    'DeCHO Connect',
+                    style: FlutterFlowTheme.of(context).title2.override(
+                          fontFamily: 'Poppins',
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
+                  ),
+                ),
+                Divider(
+                  indent: 20,
+                  endIndent: 20,
+                  color: FlutterFlowTheme.of(context).secondaryText,
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                   child: Text(
                     'List Causes',
                     style: FlutterFlowTheme.of(context).title2.override(
@@ -216,6 +212,7 @@ class _ListCausesWidgetState extends State<ListCausesWidget> {
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
@@ -223,6 +220,34 @@ class _ListCausesWidgetState extends State<ListCausesWidget> {
                   width: double.infinity,
                   decoration: BoxDecoration(),
                   alignment: AlignmentDirectional(1, 0),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(20, 20, 0, 0),
+                child: FFButtonWidget(
+                  onPressed: () async {
+                    response = await ListcausesCall.call();
+
+                    setState(() {});
+                  },
+                  text: 'Fetch',
+                  icon: FaIcon(
+                    FontAwesomeIcons.feather,
+                  ),
+                  options: FFButtonOptions(
+                    width: 130,
+                    height: 40,
+                    color: FlutterFlowTheme.of(context).secondaryText,
+                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                          fontFamily: 'Poppins',
+                          color: Colors.white,
+                        ),
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1,
+                    ),
+                    borderRadius: 12,
+                  ),
                 ),
               ),
               Align(
