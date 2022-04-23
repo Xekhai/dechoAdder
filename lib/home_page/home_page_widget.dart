@@ -146,12 +146,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   Align(
                     alignment: AlignmentDirectional(-1, 0),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 70, 0, 0),
                       child: Image.asset(
                         'assets/images/DeCHO_for_algorand_ecosystem_White_Logo.png',
                         width: 100,
                         height: 100,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.contain,
                       ),
                     ),
                   ),
@@ -193,7 +193,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   endIndent: 20,
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 20, 0),
                   child: InkWell(
                     onTap: () async {
                       await Navigator.push(
@@ -652,35 +652,42 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                      child: FFButtonWidget(
-                        onPressed: () async {
-                          await DatePicker.showDateTimePicker(
-                            context,
-                            showTitleActions: true,
-                            onConfirm: (date) {
-                              setState(() => datePicked = date);
-                            },
-                            currentTime: getCurrentTimestamp,
-                            minTime: getCurrentTimestamp,
-                          );
-                        },
-                        text: 'Select Date ',
-                        options: FFButtonOptions(
-                          width: double.infinity,
-                          height: 40,
-                          color: FlutterFlowTheme.of(context).primaryColor,
-                          textStyle:
-                              FlutterFlowTheme.of(context).subtitle2.override(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.white,
-                                  ),
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1,
+                    Align(
+                      alignment: AlignmentDirectional(0.05, 0),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            await DatePicker.showDateTimePicker(
+                              context,
+                              showTitleActions: true,
+                              onConfirm: (date) {
+                                setState(() => datePicked = date);
+                              },
+                              currentTime: getCurrentTimestamp,
+                              minTime: getCurrentTimestamp,
+                            );
+                          },
+                          text: 'Select Date ',
+                          icon: Icon(
+                            Icons.date_range,
+                            size: 15,
                           ),
-                          borderRadius: 12,
+                          options: FFButtonOptions(
+                            width: double.infinity,
+                            height: 55,
+                            color: FlutterFlowTheme.of(context).primaryColor,
+                            textStyle:
+                                FlutterFlowTheme.of(context).subtitle2.override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                    ),
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
+                            ),
+                            borderRadius: 5,
+                          ),
                         ),
                       ),
                     ),
@@ -689,28 +696,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                         child: Text(
-                          valueOrDefault<String>(
-                            dateTimeFormat('d/M h:mm a', datePicked),
-                            'Select Date above',
-                          ),
+                          dateTimeFormat('d/M h:mm a', datePicked),
                           textAlign: TextAlign.start,
                           style: FlutterFlowTheme.of(context).bodyText1,
                         ),
                       ),
                     ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(),
-                  alignment: AlignmentDirectional(1, 0),
-                  child: Visibility(
-                    visible: !(FFAppState().loading) ?? true,
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                    Align(
+                      alignment: AlignmentDirectional(1, 0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           jktest = await CreateCauseDeCHOCall.call(
@@ -757,27 +750,28 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           setState(() {});
                         },
                         text: 'Create',
+                        icon: Icon(
+                          Icons.create_new_folder_rounded,
+                          size: 15,
+                        ),
                         options: FFButtonOptions(
-                          width: 150,
+                          width: 130,
                           height: 40,
-                          color: Color(0xFF39D2C0),
+                          color: FlutterFlowTheme.of(context).secondaryColor,
                           textStyle:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
+                              FlutterFlowTheme.of(context).subtitle2.override(
+                                    fontFamily: 'Poppins',
                                     color: Colors.white,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
                                   ),
-                          elevation: 2,
                           borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1,
                           ),
-                          borderRadius: 40,
+                          borderRadius: 5,
                         ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
               ),
               Align(
@@ -807,10 +801,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
                     child: Text(
-                      getJsonField(
-                        (jktest?.jsonBody ?? ''),
-                        r'''$''',
-                      ).toString(),
+                      valueOrDefault<String>(
+                        getJsonField(
+                          (jktest?.jsonBody ?? ''),
+                          r'''$''',
+                        ).toString(),
+                        'Awaiting User Action',
+                      ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Poppins',
                             color:

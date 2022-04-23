@@ -282,7 +282,7 @@ class _ListCausesWidgetState extends State<ListCausesWidget> {
                           (response?.jsonBody ?? ''),
                           r'''$''',
                         ).toString(),
-                        'Loading...',
+                        'Fetch to see results',
                       ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Poppins',
