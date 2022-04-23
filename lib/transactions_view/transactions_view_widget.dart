@@ -7,21 +7,31 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../give_away_lists/give_away_lists_widget.dart';
 import '../home_page/home_page_widget.dart';
-import '../transactions_view/transactions_view_widget.dart';
+import '../list_causes/list_causes_widget.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ListCausesWidget extends StatefulWidget {
-  const ListCausesWidget({Key key}) : super(key: key);
+class TransactionsViewWidget extends StatefulWidget {
+  const TransactionsViewWidget({Key key}) : super(key: key);
 
   @override
-  _ListCausesWidgetState createState() => _ListCausesWidgetState();
+  _TransactionsViewWidgetState createState() => _TransactionsViewWidgetState();
 }
 
-class _ListCausesWidgetState extends State<ListCausesWidget> {
+class _TransactionsViewWidgetState extends State<TransactionsViewWidget> {
   ApiCallResponse response;
+  TextEditingController textController1;
+  TextEditingController textController2;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    textController1 = TextEditingController();
+    textController2 = TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +93,7 @@ class _ListCausesWidgetState extends State<ListCausesWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                   child: Text(
-                    'List Causes',
+                    'View Transactions',
                     style: FlutterFlowTheme.of(context).title2.override(
                           fontFamily: 'Poppins',
                           color: Colors.white,
@@ -156,15 +166,15 @@ class _ListCausesWidgetState extends State<ListCausesWidget> {
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Icon(
-                      Icons.list_alt,
+                    FaIcon(
+                      FontAwesomeIcons.skating,
                       color: FlutterFlowTheme.of(context).secondaryText,
                       size: 24,
                     ),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                       child: Text(
-                        'List Causes API',
+                        'View Transactions API',
                         style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily: 'Poppins',
                               color: FlutterFlowTheme.of(context).secondaryText,
@@ -197,7 +207,7 @@ class _ListCausesWidgetState extends State<ListCausesWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Icon(
-                                Icons.add_box_outlined,
+                                Icons.add_circle_outline,
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
                                 size: 24,
@@ -207,6 +217,58 @@ class _ListCausesWidgetState extends State<ListCausesWidget> {
                                     EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                                 child: Text(
                                   'Create API',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                      ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Icon(
+                          Icons.chevron_right_rounded,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          size: 24,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 20, 0),
+                  child: InkWell(
+                    onTap: () async {
+                      await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ListCausesWidget(),
+                        ),
+                      );
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              FaIcon(
+                                FontAwesomeIcons.listAlt,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 24,
+                              ),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+                                child: Text(
+                                  'List Projects API',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
@@ -457,30 +519,122 @@ class _ListCausesWidgetState extends State<ListCausesWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20, 20, 0, 0),
-                child: FFButtonWidget(
-                  onPressed: () async {
-                    response = await ListcausesCall.call();
-
-                    setState(() {});
-                  },
-                  text: 'Fetch',
-                  icon: FaIcon(
-                    FontAwesomeIcons.feather,
+                padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
+                child: TextFormField(
+                  onChanged: (_) => EasyDebounce.debounce(
+                    'textController1',
+                    Duration(milliseconds: 2000),
+                    () => setState(() {}),
                   ),
-                  options: FFButtonOptions(
-                    width: 130,
-                    height: 40,
-                    color: FlutterFlowTheme.of(context).secondaryText,
-                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily: 'Poppins',
-                          color: Colors.white,
-                        ),
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1,
+                  controller: textController1,
+                  obscureText: false,
+                  decoration: InputDecoration(
+                    hintText: 'Enter Cause ID',
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(5),
                     ),
-                    borderRadius: 12,
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    suffixIcon: textController1.text.isNotEmpty
+                        ? InkWell(
+                            onTap: () => setState(
+                              () => textController1.clear(),
+                            ),
+                            child: Icon(
+                              Icons.clear,
+                              color: Color(0xFF757575),
+                              size: 22,
+                            ),
+                          )
+                        : null,
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyText1,
+                  keyboardType: TextInputType.number,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
+                child: TextFormField(
+                  onChanged: (_) => EasyDebounce.debounce(
+                    'textController2',
+                    Duration(milliseconds: 2000),
+                    () => setState(() {}),
+                  ),
+                  controller: textController2,
+                  obscureText: false,
+                  decoration: InputDecoration(
+                    hintText: 'Enter Wallet Address',
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    suffixIcon: textController2.text.isNotEmpty
+                        ? InkWell(
+                            onTap: () => setState(
+                              () => textController2.clear(),
+                            ),
+                            child: Icon(
+                              Icons.clear,
+                              color: Color(0xFF757575),
+                              size: 22,
+                            ),
+                          )
+                        : null,
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyText1,
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(1, 0),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(20, 15, 20, 0),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      response = await ViewTransactionsCall.call(
+                        causeID: int.parse(textController1.text),
+                        address: textController2.text,
+                      );
+
+                      setState(() {});
+                    },
+                    text: 'Fetch',
+                    icon: FaIcon(
+                      FontAwesomeIcons.skating,
+                    ),
+                    options: FFButtonOptions(
+                      width: 130,
+                      height: 40,
+                      color: FlutterFlowTheme.of(context).secondaryText,
+                      textStyle:
+                          FlutterFlowTheme.of(context).subtitle2.override(
+                                fontFamily: 'Poppins',
+                                color: Colors.white,
+                              ),
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: 1,
+                      ),
+                      borderRadius: 12,
+                    ),
                   ),
                 ),
               ),

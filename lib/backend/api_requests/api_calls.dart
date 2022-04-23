@@ -77,3 +77,56 @@ class CheckChoiceBalanceCall {
     );
   }
 }
+
+class EnterGiveawayCall {
+  static Future<ApiCallResponse> call({
+    String address = '',
+  }) {
+    final body = '''
+{
+  "address": "${address}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'EnterGiveaway',
+      apiUrl: 'https://decho-staging.herokuapp.com/api/v1/giveaway/',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {
+        'address': address,
+      },
+      body: body,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+    );
+  }
+}
+
+class ViewGiveAwayCall {
+  static Future<ApiCallResponse> call() {
+    return ApiManager.instance.makeApiCall(
+      callName: 'ViewGiveAway',
+      apiUrl: 'https://decho-staging.herokuapp.com/api/v1/results/',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+    );
+  }
+}
+
+class ViewTransactionsCall {
+  static Future<ApiCallResponse> call({
+    int causeID,
+    String address = '',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'ViewTransactions',
+      apiUrl:
+          'https://decho-staging.herokuapp.com/api/v1/transactions/${causeID}/${address}/',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+    );
+  }
+}

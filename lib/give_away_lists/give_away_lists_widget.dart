@@ -5,21 +5,21 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../give_away_lists/give_away_lists_widget.dart';
 import '../home_page/home_page_widget.dart';
+import '../list_causes/list_causes_widget.dart';
 import '../transactions_view/transactions_view_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ListCausesWidget extends StatefulWidget {
-  const ListCausesWidget({Key key}) : super(key: key);
+class GiveAwayListsWidget extends StatefulWidget {
+  const GiveAwayListsWidget({Key key}) : super(key: key);
 
   @override
-  _ListCausesWidgetState createState() => _ListCausesWidgetState();
+  _GiveAwayListsWidgetState createState() => _GiveAwayListsWidgetState();
 }
 
-class _ListCausesWidgetState extends State<ListCausesWidget> {
+class _GiveAwayListsWidgetState extends State<GiveAwayListsWidget> {
   ApiCallResponse response;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -83,7 +83,7 @@ class _ListCausesWidgetState extends State<ListCausesWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                   child: Text(
-                    'List Causes',
+                    'List  Addresses Enrolled',
                     style: FlutterFlowTheme.of(context).title2.override(
                           fontFamily: 'Poppins',
                           color: Colors.white,
@@ -156,15 +156,15 @@ class _ListCausesWidgetState extends State<ListCausesWidget> {
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Icon(
-                      Icons.list_alt,
+                    FaIcon(
+                      FontAwesomeIcons.gitter,
                       color: FlutterFlowTheme.of(context).secondaryText,
                       size: 24,
                     ),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                       child: Text(
-                        'List Causes API',
+                        'List GiveAway Address API',
                         style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily: 'Poppins',
                               color: FlutterFlowTheme.of(context).secondaryText,
@@ -197,7 +197,7 @@ class _ListCausesWidgetState extends State<ListCausesWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Icon(
-                                Icons.add_box_outlined,
+                                Icons.add_circle_outline,
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
                                 size: 24,
@@ -207,6 +207,58 @@ class _ListCausesWidgetState extends State<ListCausesWidget> {
                                     EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                                 child: Text(
                                   'Create API',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                      ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Icon(
+                          Icons.chevron_right_rounded,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          size: 24,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 20, 0),
+                  child: InkWell(
+                    onTap: () async {
+                      await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ListCausesWidget(),
+                        ),
+                      );
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              FaIcon(
+                                FontAwesomeIcons.listAlt,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 24,
+                              ),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+                                child: Text(
+                                  'List Projects API',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
@@ -460,7 +512,7 @@ class _ListCausesWidgetState extends State<ListCausesWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(20, 20, 0, 0),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    response = await ListcausesCall.call();
+                    response = await ViewGiveAwayCall.call();
 
                     setState(() {});
                   },
