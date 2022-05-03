@@ -66,9 +66,9 @@ class _MyAppState extends State<MyApp> {
                 child: Builder(
                   builder: (context) => Image.asset(
                     'assets/images/DechoConnectLogo.png',
-                    width: double.infinity,
-                    height: double.infinity,
-                    fit: BoxFit.fitWidth,
+                    width: 100,
+                    height: 100,
+                    fit: BoxFit.fill,
                   ),
                 ),
               ),
