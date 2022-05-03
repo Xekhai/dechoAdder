@@ -519,14 +519,15 @@ class _EnterGiveawayWidgetState extends State<EnterGiveawayWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
                 child: TextFormField(
+                  controller: textController,
                   onChanged: (_) => EasyDebounce.debounce(
                     'textController',
                     Duration(milliseconds: 2000),
                     () => setState(() {}),
                   ),
-                  controller: textController,
                   obscureText: false,
                   decoration: InputDecoration(
+                    labelText: 'Enter Wallet Address',
                     hintText: 'Enter Wallet Address',
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(

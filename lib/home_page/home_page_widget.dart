@@ -475,14 +475,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                       child: TextFormField(
+                        controller: titleController,
                         onChanged: (_) => EasyDebounce.debounce(
                           'titleController',
                           Duration(milliseconds: 2000),
                           () => setState(() {}),
                         ),
-                        controller: titleController,
                         obscureText: false,
                         decoration: InputDecoration(
+                          labelText: 'Title',
                           labelStyle:
                               FlutterFlowTheme.of(context).bodyText1.override(
                                     fontFamily: 'Lexend Deca',
@@ -490,7 +491,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
                                   ),
-                          hintText: 'Title',
+                          hintText: 'Enter your email...',
                           hintStyle:
                               FlutterFlowTheme.of(context).bodyText1.override(
                                     fontFamily: 'Lexend Deca',
@@ -540,14 +541,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                       child: TextFormField(
+                        controller: shortdescController,
                         onChanged: (_) => EasyDebounce.debounce(
                           'shortdescController',
                           Duration(milliseconds: 2000),
                           () => setState(() {}),
                         ),
-                        controller: shortdescController,
                         obscureText: false,
                         decoration: InputDecoration(
+                          labelText: 'Short Description ',
                           labelStyle:
                               FlutterFlowTheme.of(context).bodyText1.override(
                                     fontFamily: 'Lexend Deca',
@@ -555,7 +557,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
                                   ),
-                          hintText: 'Short Description ',
+                          hintText: 'Enter your email...',
                           hintStyle:
                               FlutterFlowTheme.of(context).bodyText1.override(
                                     fontFamily: 'Lexend Deca',
@@ -605,14 +607,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                       child: TextFormField(
+                        controller: weblinkController,
                         onChanged: (_) => EasyDebounce.debounce(
                           'weblinkController',
                           Duration(milliseconds: 2000),
                           () => setState(() {}),
                         ),
-                        controller: weblinkController,
                         obscureText: false,
                         decoration: InputDecoration(
+                          labelText: 'WebUrl',
                           labelStyle:
                               FlutterFlowTheme.of(context).bodyText1.override(
                                     fontFamily: 'Lexend Deca',
@@ -620,7 +623,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
                                   ),
-                          hintText: 'Website Link',
+                          hintText: 'Enter your email...',
                           hintStyle:
                               FlutterFlowTheme.of(context).bodyText1.override(
                                     fontFamily: 'Lexend Deca',
@@ -670,14 +673,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                       child: TextFormField(
+                        controller: vgoalController,
                         onChanged: (_) => EasyDebounce.debounce(
                           'vgoalController',
                           Duration(milliseconds: 2000),
                           () => setState(() {}),
                         ),
-                        controller: vgoalController,
                         obscureText: false,
                         decoration: InputDecoration(
+                          labelText: 'Vote Goal',
                           labelStyle:
                               FlutterFlowTheme.of(context).bodyText1.override(
                                     fontFamily: 'Lexend Deca',
@@ -685,7 +689,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
                                   ),
-                          hintText: 'Voting Goal',
+                          hintText: 'Enter your email...',
                           hintStyle:
                               FlutterFlowTheme.of(context).bodyText1.override(
                                     fontFamily: 'Lexend Deca',
@@ -736,14 +740,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                       child: TextFormField(
+                        controller: dgoalController,
                         onChanged: (_) => EasyDebounce.debounce(
                           'dgoalController',
                           Duration(milliseconds: 2000),
                           () => setState(() {}),
                         ),
-                        controller: dgoalController,
                         obscureText: false,
                         decoration: InputDecoration(
+                          labelText: 'Donation Goal',
                           labelStyle:
                               FlutterFlowTheme.of(context).bodyText1.override(
                                     fontFamily: 'Lexend Deca',
@@ -751,7 +756,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
                                   ),
-                          hintText: 'Donation Goal',
+                          hintText: 'Enter your email...',
                           hintStyle:
                               FlutterFlowTheme.of(context).bodyText1.override(
                                     fontFamily: 'Lexend Deca',
@@ -802,14 +807,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                       child: TextFormField(
+                        controller: addressController,
                         onChanged: (_) => EasyDebounce.debounce(
                           'addressController',
                           Duration(milliseconds: 2000),
                           () => setState(() {}),
                         ),
-                        controller: addressController,
                         obscureText: false,
                         decoration: InputDecoration(
+                          labelText: 'Wallet Address',
                           labelStyle:
                               FlutterFlowTheme.of(context).bodyText1.override(
                                     fontFamily: 'Lexend Deca',
@@ -817,7 +823,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
                                   ),
-                          hintText: 'Wallet Address ',
+                          hintText: 'Enter your email...',
                           hintStyle:
                               FlutterFlowTheme.of(context).bodyText1.override(
                                     fontFamily: 'Lexend Deca',

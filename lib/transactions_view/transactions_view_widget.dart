@@ -521,14 +521,15 @@ class _TransactionsViewWidgetState extends State<TransactionsViewWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
                 child: TextFormField(
+                  controller: textController1,
                   onChanged: (_) => EasyDebounce.debounce(
                     'textController1',
                     Duration(milliseconds: 2000),
                     () => setState(() {}),
                   ),
-                  controller: textController1,
                   obscureText: false,
                   decoration: InputDecoration(
+                    labelText: 'Enter Cause ID',
                     hintText: 'Enter Cause ID',
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -564,14 +565,15 @@ class _TransactionsViewWidgetState extends State<TransactionsViewWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
                 child: TextFormField(
+                  controller: textController2,
                   onChanged: (_) => EasyDebounce.debounce(
                     'textController2',
                     Duration(milliseconds: 2000),
                     () => setState(() {}),
                   ),
-                  controller: textController2,
                   obscureText: false,
                   decoration: InputDecoration(
+                    labelText: 'Enter Wallet Address',
                     hintText: 'Enter Wallet Address',
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(

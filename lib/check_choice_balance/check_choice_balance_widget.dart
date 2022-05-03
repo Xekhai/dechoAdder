@@ -520,12 +520,12 @@ class _CheckChoiceBalanceWidgetState extends State<CheckChoiceBalanceWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
                 child: TextFormField(
+                  controller: textController,
                   onChanged: (_) => EasyDebounce.debounce(
                     'textController',
                     Duration(milliseconds: 2000),
                     () => setState(() {}),
                   ),
-                  controller: textController,
                   obscureText: false,
                   decoration: InputDecoration(
                     hintText: 'Enter Wallet Address',

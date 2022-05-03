@@ -1,19 +1,17 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:de_c_h_o_add/home_page/home_page_widget.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'index.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await FlutterFlowTheme.initialize();
 
-  // Initialize FFAppState.
-  FFAppState();
+  FFAppState(); // Initialize FFAppState
 
   runApp(MyApp());
 }
@@ -30,6 +28,15 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   Locale _locale;
   ThemeMode _themeMode = FlutterFlowTheme.themeMode;
+
+  bool displaySplashImage = true;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(
+        Duration(seconds: 1), () => setState(() => displaySplashImage = false));
+  }
 
   void setLocale(Locale value) => setState(() => _locale = value);
   void setThemeMode(ThemeMode mode) => setState(() {
@@ -52,7 +59,21 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(brightness: Brightness.light),
       darkTheme: ThemeData(brightness: Brightness.dark),
       themeMode: _themeMode,
-      home: HomePageWidget(),
+      home: displaySplashImage
+          ? Container(
+              color: Color(0xFF041E3F),
+              child: Center(
+                child: Builder(
+                  builder: (context) => Image.asset(
+                    'assets/images/DechoConnectLogo.png',
+                    width: double.infinity,
+                    height: double.infinity,
+                    fit: BoxFit.fitWidth,
+                  ),
+                ),
+              ),
+            )
+          : HomePageWidget(),
     );
   }
 }
