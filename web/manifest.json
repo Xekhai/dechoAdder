@@ -1,6 +1,6 @@
 {
-    "name": "DeCHO-Add",
-    "short_name": "DeCHO-Add",
+    "name": "DeCHO-Connect ",
+    "short_name": "DeCHO-Connect ",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

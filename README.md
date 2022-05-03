@@ -1,4 +1,4 @@
-# DeCHO-Add
+# DeCHO-Connect 
 
 A new Flutter project.
 
